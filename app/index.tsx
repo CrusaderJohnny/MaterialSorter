@@ -1,10 +1,9 @@
 import { View, Text, StyleSheet } from "react-native";
+import MainMenu from "../components/menu";
 
 export default function App() {
     return(
-        <View style={styles.container}>
-            <Text style={styles.text}>This is the first page</Text>
-        </View>
+        <MainMenu/>
     );
 };
 
