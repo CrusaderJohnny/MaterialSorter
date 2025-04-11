@@ -9,17 +9,9 @@ import {
     StyleSheet,
     KeyboardAvoidingView, // To prevent keyboard from hiding inputs
     Platform, // To check OS for KeyboardAvoidingView behavior
-    ScrollView // To allow scrolling if content overflows on small screens
+    ScrollView, // To allow scrolling if content overflows on small screens
+    StatusBar
 } from 'react-native';
-
-// --- Assumptions ---
-// 1. You have an image source imported or defined, like:
-// import login1 from './assets/login-image.png'; // Example import
-const login1 = { uri: 'https://via.placeholder.com/150' }; // Placeholder if no local image
-
-// 2. This component receives props or manages state for email/password
-// We'll use local state here as an example.
-// --- End Assumptions ---
 
 const LoginScreen = () => {
     // State for input fields
@@ -31,11 +23,12 @@ const LoginScreen = () => {
     // Placeholder function for login logic
     const handleLogin = () => {
         console.log('Login attempt with:', { email, pass });
-        // Add your authentication logic here
+        // Add authentication logic here
     };
 
     return (
         <SafeAreaView style={styles.safeArea}>
+            <StatusBar barStyle="dark-content" backgroundColor={styles.safeArea.backgroundColor} />
             <KeyboardAvoidingView
                 // Adjust behavior based on platform
                 behavior={Platform.OS === "ios" ? "padding" : "height"}
