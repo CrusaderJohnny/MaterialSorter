@@ -13,7 +13,7 @@ const MainMenu = () => {
     return (
         <SafeAreaView style={styles.safeArea}>
             {/* Optional: Set status bar style for better consistency */}
-            <StatusBar barStyle="dark-content" backgroundColor={styles.safeArea.backgroundColor} />
+            <StatusBar barStyle="dark-content" backgroundColor="#3498db" />
 
             {/* Header Section */}
             <View style={styles.header}>

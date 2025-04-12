@@ -25,7 +25,7 @@ const FavouriteReports = () => {
 const styles = StyleSheet.create({
     safeArea: {
         flex: 1,
-        backgroundColor: '#f4f4f4', // Light background color for the page
+        backgroundColor: '#f0f2f5', // Light background color for the page
     },
 });
 

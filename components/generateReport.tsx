@@ -46,7 +46,7 @@ const GenerateReport = () => {
     const optionsFor5 = useMemo(() => getAvailableOptions(fifthPriority), [selectedValues, fifthPriority]);
     return (
         <SafeAreaView style={styles.safeArea}>
-            <StatusBar barStyle="dark-content" backgroundColor={styles.safeArea.backgroundColor} />
+            <StatusBar barStyle="dark-content" backgroundColor="#3498db" />
             <PageHeader title='Create a New Report'/>
             {/* Wrap content in ScrollView */}
             <ScrollView contentContainerStyle={styles.scrollViewContainer}>

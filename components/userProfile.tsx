@@ -63,7 +63,7 @@ const UserProfile = () => {
 
     return (
         <SafeAreaView style={styles.safeArea}>
-            <StatusBar barStyle="light-content" backgroundColor={styles.topHeader.backgroundColor} />
+            <StatusBar barStyle="dark-content" backgroundColor="#3498db" />
             <ScrollView contentContainerStyle={styles.scrollViewContent}>
                 {/* Top Header */}
                 <PageHeader title='User Profile'/>

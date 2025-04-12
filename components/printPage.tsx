@@ -5,7 +5,7 @@ import PageHeader from './pageComponents/pageHeader';
 const PrintPage = () => {
     return (
         <SafeAreaView style={styles.safeArea}>
-            <StatusBar barStyle="dark-content" backgroundColor={styles.safeArea.backgroundColor} />
+            <StatusBar barStyle="dark-content" backgroundColor="#3498db" />
             <PageHeader title='Print Page'/>
                 <ScrollView contentContainerStyle={styles.scrollViewContent}>
                     {/* Big Title */}

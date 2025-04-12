@@ -50,7 +50,7 @@ const ViewReports = () => {
 
     return (
         <SafeAreaView style={styles.safeArea}>
-            <StatusBar barStyle="dark-content" backgroundColor={styles.safeArea.backgroundColor} />
+            <StatusBar barStyle="dark-content" backgroundColor="#3498db" />
             <View style={{ flex: 1 }}>
             <ScrollView contentContainerStyle={{ paddingBottom: 80 }}>
             <PageHeader title='Your Customized Report' />
