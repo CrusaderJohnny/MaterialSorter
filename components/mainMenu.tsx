@@ -3,6 +3,7 @@ import { useLocalSearchParams, useSearchParams } from 'expo-router/build/hooks';
 import React from 'react';
 import { View, SafeAreaView, Text, TouchableOpacity, StyleSheet, StatusBar } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import PageHeader from './pageComponents/pageHeader';
 
 const MainMenu = () => {
     const router = useRouter();

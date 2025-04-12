@@ -1,10 +1,12 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, SafeAreaView, ScrollView, StatusBar } from 'react-native';
+import PageHeader from './pageComponents/pageHeader';
 
 const PrintPage = () => {
     return (
         <SafeAreaView style={styles.safeArea}>
             <StatusBar barStyle="dark-content" backgroundColor={styles.safeArea.backgroundColor} />
+            <PageHeader title='Print Page'/>
                 <ScrollView contentContainerStyle={styles.scrollViewContent}>
                     {/* Big Title */}
                     <Text style={styles.bigTitle}>Print Successful</Text>

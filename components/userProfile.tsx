@@ -11,6 +11,7 @@ import {
     TextInput,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import PageHeader from './pageComponents/pageHeader';
 
 const UserProfile = () => {
     const [userImage, setUserImage] = useState(require('../assets/TB.jpg'));
@@ -65,9 +66,7 @@ const UserProfile = () => {
             <StatusBar barStyle="light-content" backgroundColor={styles.topHeader.backgroundColor} />
             <ScrollView contentContainerStyle={styles.scrollViewContent}>
                 {/* Top Header */}
-                <View style={styles.topHeader}>
-                    <Text style={styles.headerText}>User Profile</Text>
-                </View>
+                <PageHeader title='User Profile'/>
 
                 {/* Profile Box */}
                 <View style={styles.profileBox}>

@@ -4,6 +4,7 @@ import React, { useMemo, useState } from 'react';
 import { View, SafeAreaView, Text, TouchableOpacity, StyleSheet, StatusBar, ScrollView } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Dropdown } from 'react-native-element-dropdown';
+import PageHeader from './pageComponents/pageHeader';
 
 
 const GenerateReport = () => {
@@ -45,15 +46,12 @@ const GenerateReport = () => {
     const optionsFor5 = useMemo(() => getAvailableOptions(fifthPriority), [selectedValues, fifthPriority]);
     return (
         <SafeAreaView style={styles.safeArea}>
+            <StatusBar barStyle="dark-content" backgroundColor={styles.safeArea.backgroundColor} />
+            <PageHeader title='Create a New Report'/>
             {/* Wrap content in ScrollView */}
             <ScrollView contentContainerStyle={styles.scrollViewContainer}>
-                <StatusBar barStyle="dark-content" backgroundColor={styles.safeArea.backgroundColor} />
-                
-                {/* Main Screen Title */}
-                <Text style={styles.screenTitle}>Create a new report</Text>
-
-                                {/* Priority One Group */}
-                                <View style={styles.priorityGroup}>
+                {/* Priority One Group */}
+                <View style={styles.priorityGroup}>
                     <Text style={styles.label}>Priority One</Text>
                     <Dropdown
                         // ... other props remain the same (style, placeholderStyle etc.)
@@ -206,7 +204,7 @@ const GenerateReport = () => {
                         }}
                     />
                 </View>
-                <TouchableOpacity style={styles.submitButton}>
+                <TouchableOpacity style={styles.submitButton} onPress={() => console.log("Generate Report pressed")}>
                     <Text style={styles.submitButtonText}>Generate Report</Text>
                 </TouchableOpacity>
 
