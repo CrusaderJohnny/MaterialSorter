@@ -1,0 +1,38 @@
+[
+    {
+      "name": "Portland Cement",
+      "cost": 14330.65,
+      "service_life": 60,
+      "handling": 5,
+      "embodied_carbon": 10.4,
+      "waste_potential": 5,
+      "availability": 5
+    },
+    {
+      "name": "20% Fly Ash",
+      "cost": 12181.05,
+      "service_life": 60,
+      "handling": 3,
+      "embodied_carbon": 9.11,
+      "waste_potential": 3,
+      "availability": 4
+    },
+    {
+      "name": "20% Wood Ash",
+      "cost": 12181.05,
+      "service_life": 60,
+      "handling": 3,
+      "embodied_carbon": 7.5,
+      "waste_potential": 3,
+      "availability": 4
+    },
+    {
+      "name": "20% Blast Furnace Slag",
+      "cost": 12181.05,
+      "service_life": 50,
+      "handling": 3,
+      "embodied_carbon": 8.3,
+      "waste_potential": 3,
+      "availability": 3
+    }
+  ]
