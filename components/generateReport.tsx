@@ -5,6 +5,7 @@ import { View, SafeAreaView, Text, TouchableOpacity, StyleSheet, StatusBar, Scro
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Dropdown } from 'react-native-element-dropdown';
 import PageHeader from './pageComponents/pageHeader';
+import SortReport from './sortComponents/sortReport';
 
 
 const GenerateReport = () => {
@@ -204,7 +205,7 @@ const GenerateReport = () => {
                         }}
                     />
                 </View>
-                <TouchableOpacity style={styles.submitButton} onPress={() => console.log("Generate Report pressed")}>
+                <TouchableOpacity style={styles.submitButton} onPress={() => SortReport(firstPriority,secondPriority,thirdPriority,fourthPriority,fifthPriority)}>
                     <Text style={styles.submitButtonText}>Generate Report</Text>
                 </TouchableOpacity>
 

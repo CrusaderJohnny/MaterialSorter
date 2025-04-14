@@ -8,6 +8,6 @@ import MainMenu from "../components/mainMenu";
 
 export default function App() {
     return(
-        <FavouriteReports/>
+        <GenerateReport/>
     );
 };
