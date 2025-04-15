@@ -4,10 +4,11 @@ import PrintPage from "../components/printPage";
 import ViewReports from "../components/viewReports";
 import UserProfile from "../components/userProfile";
 import MainMenu from "../components/mainMenu";
+import LoginScreen from "../components/logIn"
 
 
 export default function App() {
     return(
-        <GenerateReport/>
+        <LoginScreen/>
     );
 };

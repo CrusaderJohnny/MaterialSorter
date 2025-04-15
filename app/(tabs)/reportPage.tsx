@@ -1,2 +1,0 @@
-//// this page will display the reports in a vertical scroll option so that the user can view the reports by scrolling, a button will be present at 
-// the top and bottom of this page to allow the user to print the page right away without having to view all the information on the phone

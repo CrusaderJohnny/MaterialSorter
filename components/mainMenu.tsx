@@ -10,6 +10,20 @@ const MainMenu = () => {
     const params = useLocalSearchParams();
     const user = "Guest";
 
+    const navReport = () => {
+        router.push("/viewReportPage")
+    }
+
+    const navGen = () => {
+        router.push("/genReportPage")
+    }
+
+    const navProfile = () => {
+        router.push("/userInfoPage")
+    }
+
+
+
     return (
         <SafeAreaView style={styles.safeArea}>
             {/* Optional: Set status bar style for better consistency */}
@@ -18,7 +32,7 @@ const MainMenu = () => {
             {/* Header Section */}
             <View style={styles.header}>
                 {/* Spacer View to push icons to the right */}
-                <TouchableOpacity style={styles.iconButton}>
+                <TouchableOpacity style={styles.iconButton} onPress={navProfile}>
                     <Ionicons name='person-circle' size={30} color="#555" />
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.iconButton}>
@@ -35,10 +49,10 @@ const MainMenu = () => {
 
             {/* Button Section */}
             <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={styles.button} onPress={navGen}>
                     <Text style={styles.buttonText}>Generate Report</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={styles.button} onPress={navReport}>
                     <Text style={styles.buttonText}>View Reports</Text>
                 </TouchableOpacity>
             </View>

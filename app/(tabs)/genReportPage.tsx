@@ -1,6 +1,6 @@
-/// this page displays the user information
+//// this page will allow the user to view any reports they have generated
 
-import UserProfile from "../../components/userProfile";
+import GenerateReport from "../../components/generateReport";
 
 ////this will display the users options for the program
 //// including buttons for Generate report, View report(s), and View user information
@@ -8,6 +8,6 @@ import UserProfile from "../../components/userProfile";
 
 export default function App() {
     return(
-        <UserProfile/>
+        <GenerateReport/>
     );
 };

@@ -12,8 +12,10 @@ import {
     ScrollView, // To allow scrolling if content overflows on small screens
     StatusBar
 } from 'react-native';
+import { useRouter } from 'expo-router';
 
 const LoginScreen = () => {
+    const router = useRouter();
     // State for input fields
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
@@ -22,6 +24,7 @@ const LoginScreen = () => {
 
     // Placeholder function for login logic
     const handleLogin = () => {
+        router.push("/menuPage")
         console.log('Login attempt with:', { email, pass });
         // Add authentication logic here
     };
