@@ -46,6 +46,7 @@ const ViewReports = () => {
     const handlePrint = () => {
         console.log('Print button pressed');
         // Implement routing here
+        router.push("/printedPage")
     };
 
     return (

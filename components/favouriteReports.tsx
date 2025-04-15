@@ -1,3 +1,4 @@
+import { useRouter } from 'expo-router';
 import React from 'react';
 import { SafeAreaView, StyleSheet, StatusBar } from 'react-native';
 import PageHeader from './pageComponents/pageHeader';
@@ -12,6 +13,17 @@ const FavouriteReports = () => {
         { id: 4, title: 'Daily Activity Log - April 12', createdAt: '2025-04-12' },
         { id: 5, title: 'Project Status Update - Alpha', createdAt: '2025-04-05' },
     ];
+
+
+    const router = useRouter();
+
+    const navView = () => {
+        router.push("/viewReportPage")
+    }
+
+    const navEdit = () => {
+        router.push("/genReportPage")
+    }
 
     return (
         <SafeAreaView style={styles.safeArea}>

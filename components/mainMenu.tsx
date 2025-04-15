@@ -11,7 +11,7 @@ const MainMenu = () => {
     const user = "Guest";
 
     const navReport = () => {
-        router.push("/viewReportPage")
+        router.push("/favouriteReportsPage")
     }
 
     const navGen = () => {

@@ -1,8 +1,23 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, SafeAreaView, ScrollView, StatusBar } from 'react-native';
 import PageHeader from './pageComponents/pageHeader';
+import { useRouter } from 'expo-router';
 
 const PrintPage = () => {
+
+    const router = useRouter();
+
+    const navBack = () => {
+        router.back()
+    }
+
+    const navHome = () => {
+        router.push("/menuPage")
+    }
+
+
+
+
     return (
         <SafeAreaView style={styles.safeArea}>
             <StatusBar barStyle="dark-content" backgroundColor="#3498db" />
@@ -14,13 +29,13 @@ const PrintPage = () => {
                     {/* Regular Text and TouchableOpacity Button */}
                     <View style={styles.middleSection}>
                     <Text style={styles.regularText}>Your report has been saved in </Text>
-                    <TouchableOpacity style={styles.viewReportsButton} onPress={() => console.log('View Reports Pressed')}>
+                    <TouchableOpacity style={styles.viewReportsButton} onPress={navBack}>
                         <Text style={styles.viewReportsButtonText}>View Reports</Text>
                     </TouchableOpacity>
                     </View>
 
                     {/* Big Button at the Bottom */}
-                    <TouchableOpacity style={styles.bigButton} onPress={() => console.log('Return to Homepage Pressed')}>
+                    <TouchableOpacity style={styles.bigButton} onPress={navHome}>
                     <Text style={styles.bigButtonText}>Return to Homepage</Text>
                     </TouchableOpacity>
                 </ScrollView>

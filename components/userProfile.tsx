@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import PageHeader from './pageComponents/pageHeader';
+import { useRouter } from 'expo-router';
 
 const UserProfile = () => {
     const [userImage, setUserImage] = useState(require('../assets/TB.jpg'));
@@ -35,6 +36,11 @@ const UserProfile = () => {
         setTempPassword(''); // Clear the temp password when entering edit mode
         setIsEditing(true);
     };
+
+    const router = useRouter();
+    const navBack = () => {
+        router.back()
+    }
 
     const handleSavePress = () => {
         setUsername(tempUsername);
@@ -171,7 +177,7 @@ const UserProfile = () => {
                 </View>
                 {/* Back to Home */}
                 <View style={styles.backButtonContainer}>
-                    <TouchableOpacity style={styles.backButton}>
+                    <TouchableOpacity style={styles.backButton} onPress={navBack}>
                         <Ionicons name='arrow-back' size={24} color="#333" style={{ marginRight: 5 }} />
                         <Text style={styles.backButtonText}>Back to Home</Text>
                     </TouchableOpacity>
