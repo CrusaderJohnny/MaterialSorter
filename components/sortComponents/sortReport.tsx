@@ -1,6 +1,7 @@
 import foundations from './foundations.json';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export default function SortReport(pri1: any,pri2: any,pri3: any,pri4: any,pri5: any) {
+export default async function SortReport(pri1: any,pri2: any,pri3: any,pri4: any,pri5: any) {
     console.log(" - Generate Report pressed")
     console.log(" - Priority #1: ",pri1)
     console.log(" - Priority #2: ",pri2)
@@ -69,6 +70,16 @@ export default function SortReport(pri1: any,pri2: any,pri3: any,pri4: any,pri5:
     const userPriorities1: string[] = [pri1,pri2,pri3,pri4,pri5];
     const sortedData1 = sortByPriorities(foundations, userPriorities1);
     console.log(" - Sorted with priorities: ",userPriorities1, JSON.stringify(sortedData1, null, 2));
+
+
+    const jsonData = JSON.stringify(sortedData1, null, 2);
+
+    try {
+        await AsyncStorage.setItem('sortedReport', jsonData);
+        console.log(" - Sorted data saved to AsyncStorage with key 'sortedReport'");
+    } catch (error) {
+        console.error(" - Error saving to AsyncStorage:", error);
+    }
 
 
 }
