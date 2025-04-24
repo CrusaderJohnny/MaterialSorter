@@ -1,4 +1,4 @@
-import { useRouter } from 'expo-router';
+import { router, useRouter } from 'expo-router';
 import { useLocalSearchParams, useSearchParams } from 'expo-router/build/hooks';
 import React, { useMemo, useState } from 'react';
 import { View, SafeAreaView, Text, TouchableOpacity, StyleSheet, StatusBar, ScrollView } from 'react-native';
@@ -205,10 +205,13 @@ const GenerateReport = () => {
                         }}
                     />
                 </View>
-                <TouchableOpacity style={styles.submitButton} onPress={() => SortReport(firstPriority,secondPriority,thirdPriority,fourthPriority,fifthPriority)}>
+                {/* <TouchableOpacity style={styles.submitButton} onPress={() => SortReport(firstPriority,secondPriority,thirdPriority,fourthPriority,fifthPriority)}>
+                    <Text style={styles.submitButtonText}>Generate Report</Text>
+                </TouchableOpacity> */}
+
+                <TouchableOpacity style={styles.submitButton} onPress={() => router.push("/viewReportPage")}>
                     <Text style={styles.submitButtonText}>Generate Report</Text>
                 </TouchableOpacity>
-
             </ScrollView>
         </SafeAreaView>
     );
