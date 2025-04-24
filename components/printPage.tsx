@@ -8,7 +8,7 @@ const PrintPage = () => {
     const router = useRouter();
 
     const navBack = () => {
-        router.back()
+        router.push("/favouriteReportsPage")
     }
 
     const navHome = () => {

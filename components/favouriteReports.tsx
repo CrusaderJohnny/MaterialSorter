@@ -18,7 +18,7 @@ const FavouriteReports = () => {
     const router = useRouter();
 
     const navView = () => {
-        router.push("/viewReportPage")
+        router.push("/viewFeedbackPage")
     }
 
     const navEdit = () => {
