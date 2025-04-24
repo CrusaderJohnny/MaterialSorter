@@ -1,28 +1,86 @@
-import { useRouter } from 'expo-router';
+import { Tabs, useRouter } from 'expo-router';
 import { useLocalSearchParams} from 'expo-router/build/hooks';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { SafeAreaView, StyleSheet, StatusBar, ScrollView, View, TouchableOpacity, Text } from 'react-native';
 import PageHeader from './pageComponents/pageHeader';
 import CustomTable from './tableComponents/customTable';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const ViewReports = () => {
     const router = useRouter();
     const params = useLocalSearchParams();
+    const [foundationTableData, setFoundationTableData] = useState<{
+        tableName: string;
+        headers: string[];
+        data: (string | number)[][];
+    } | null>(null);
 
-    // Example data for the first table (Foundation)
-    const foundationTableData = {
-        tableName: '1. Foundation',
-        headers: ['Material', 'Cost', 'Handling', 'Waste Potential'],
-        data: [
-            ['Portland Cement', 25.60, 13, 20],
-            ['20% Fly Ash', 32, 10, 4],
-            ['20% Wood Ash', 10, 22, 6],
-            ['20% Blast Furnace Slag', 2, 20, 44],
-        ],
+    const retrieveSortedData = async () => {
+        try {
+            const jsonData = await AsyncStorage.getItem('sortedReport');
+            if (jsonData !== null) {
+                const retrievedData = JSON.parse(jsonData);
+                console.log("Retrieved data:", retrievedData);
+
+                if (retrievedData && retrievedData.length > 0) {
+                    const tableData = {
+                        tableName: '1. Foundation',
+                        headers: ['Material', 'Cost', 'Handling', 'Waste Potential'],
+                        data: [
+                            [retrievedData[0]?.name || '', retrievedData[0]?.cost || '', retrievedData[0]?.handling || '', retrievedData[0]?.waste_potential || ''],
+                            [retrievedData[1]?.name || '', retrievedData[1]?.cost || '', retrievedData[1]?.handling || '', retrievedData[1]?.waste_potential || ''],
+                            [retrievedData[2]?.name || '', retrievedData[2]?.cost || '', retrievedData[2]?.handling || '', retrievedData[2]?.waste_potential || ''],
+                            [retrievedData[3]?.name || '', retrievedData[3]?.cost || '', retrievedData[3]?.handling || '', retrievedData[3]?.waste_potential || ''],
+                        ],
+                    };
+                    setFoundationTableData(tableData);
+                } else {
+                    console.log("Retrieved data is empty or invalid for table.");
+                    setFoundationTableData({
+                        tableName: '1. Foundation',
+                        headers: ['Material', 'Cost', 'Handling', 'Waste Potential'],
+                        data: [
+                            ['No Data', '', '', ''],
+                            ['No Data', '', '', ''],
+                            ['No Data', '', '', ''],
+                            ['No Data', '', '', ''],
+                        ],
+                    });
+                }
+            } else {
+                console.log("No sorted data found in AsyncStorage.");
+                setFoundationTableData({
+                    tableName: '1. Foundation',
+                    headers: ['Material', 'Cost', 'Handling', 'Waste Potential'],
+                    data: [
+                        ['No Data', '', '', ''],
+                        ['No Data', '', '', ''],
+                        ['No Data', '', '', ''],
+                        ['No Data', '', '', ''],
+                    ],
+                });
+            }
+        } catch (error) {
+            console.error("Error retrieving data from AsyncStorage:", error);
+            setFoundationTableData({
+                tableName: '1. Foundation',
+                headers: ['Material', 'Cost', 'Handling', 'Waste Potential'],
+                data: [
+                    ['Error', '', '', ''],
+                    ['Error', '', '', ''],
+                    ['Error', '', '', ''],
+                    ['Error', '', '', ''],
+                ],
+            });
+        }
     };
 
-    // Example data for a second table (Aggregates)
+    useEffect(() => {
+        retrieveSortedData();
+    }, []); // Empty dependency array means this effect runs once after the initial render
+
+    // Example data for a second table (Aggregates) - This data is static
     const aggregatesTableData = {
         tableName: '2. Aggregates',
         headers: ['Type', 'Size (mm)', 'Unit Price', 'Availability'],
@@ -33,7 +91,7 @@ const ViewReports = () => {
         ],
     };
 
-    // Example data for a third table (Admixtures)
+    // Example data for a third table (Admixtures) - This data is static
     const admixturesTableData = {
         tableName: '3. Admixtures',
         headers: ['Name', 'Dosage', 'Effect'],
@@ -45,34 +103,35 @@ const ViewReports = () => {
 
     const handlePrint = () => {
         console.log('Print button pressed');
-        // Implement routing here
-        router.push("/printedPage")
+        router.push("/printedPage");
     };
 
     return (
         <SafeAreaView style={styles.safeArea}>
             <StatusBar barStyle="dark-content" backgroundColor="#3498db" />
             <View style={{ flex: 1 }}>
-            <ScrollView contentContainerStyle={{ paddingBottom: 80 }}>
-            <PageHeader title='Your Customized Report' />
-                <CustomTable
-                    tableName={foundationTableData.tableName}
-                    headers={foundationTableData.headers}
-                    data={foundationTableData.data}
-                />
+                <ScrollView contentContainerStyle={{ paddingBottom: 80 }}>
+                    <PageHeader title='Your Customized Report' />
+                    {foundationTableData && (
+                        <CustomTable
+                            tableName={foundationTableData.tableName}
+                            headers={foundationTableData.headers}
+                            data={foundationTableData.data}
+                        />
+                    )}
 
-                <CustomTable
-                    tableName={aggregatesTableData.tableName}
-                    headers={aggregatesTableData.headers}
-                    data={aggregatesTableData.data}
-                />
+                    <CustomTable
+                        tableName={aggregatesTableData.tableName}
+                        headers={aggregatesTableData.headers}
+                        data={aggregatesTableData.data}
+                    />
 
-                <CustomTable
-                    tableName={admixturesTableData.tableName}
-                    headers={admixturesTableData.headers}
-                    data={admixturesTableData.data}
-                />
-            </ScrollView>
+                    <CustomTable
+                        tableName={admixturesTableData.tableName}
+                        headers={admixturesTableData.headers}
+                        data={admixturesTableData.data}
+                    />
+                </ScrollView>
                 <TouchableOpacity onPress={handlePrint} style={styles.printButton}>
                     <Text style={styles.printButtonText}>Print</Text>
                 </TouchableOpacity>
@@ -101,11 +160,11 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
-        padding: 0, 
+        padding: 0,
     },
     tableBackground: {
-        backgroundColor: '#e0e0e0', 
-        borderRadius: 5, 
+        backgroundColor: '#e0e0e0',
+        borderRadius: 5,
     },
     row: {
         flexDirection: 'row',
@@ -129,11 +188,11 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 20,
         right: 20,
-        backgroundColor: '#4CAF50', 
+        backgroundColor: '#4CAF50',
         paddingVertical: 12,
         paddingHorizontal: 20,
         borderRadius: 8,
-        elevation: 5, 
+        elevation: 5,
     },
     printButtonText: {
         color: '#fff',

@@ -1,5 +1,6 @@
 import foundations from './foundations.json';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { router, useRouter } from 'expo-router';
 
 export default async function SortReport(pri1: any,pri2: any,pri3: any,pri4: any,pri5: any) {
     console.log(" - Generate Report pressed")
@@ -77,10 +78,12 @@ export default async function SortReport(pri1: any,pri2: any,pri3: any,pri4: any
     try {
         await AsyncStorage.setItem('sortedReport', jsonData);
         console.log(" - Sorted data saved to AsyncStorage with key 'sortedReport'");
+        //router.push('/viewReportPage')
     } catch (error) {
         console.error(" - Error saving to AsyncStorage:", error);
     }
 
+    
 
 }
 
