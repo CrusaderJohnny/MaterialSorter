@@ -30,7 +30,7 @@ const ReportList: React.FC<ReportListProps> = ({ reports }) => {
     const handleViewFeedback = (report) => {
         console.log('View feedback for:', report.title);
         // Implement your view feedback functionality here
-        router.push("/viewReportPage")
+        router.push("/viewFeedbackPage")
     };
 
     return (
