@@ -32,7 +32,7 @@ const GenerateReport = () => {
     const selectedValues = useMemo(() => {
         return [firstPriority, secondPriority, thirdPriority, fourthPriority, fifthPriority].filter(v => v !== null);
     }, [firstPriority, secondPriority, thirdPriority, fourthPriority, fifthPriority]);
-    const getAvailableOptions = (currentValue) => {
+    const getAvailableOptions = (currentValue : any) => {
         return dropdownOptions.filter(option =>
             // Include the option if:
             // 1. It's not selected in any *other* dropdown OR
