@@ -4,6 +4,7 @@ import React from 'react';
 import { View, SafeAreaView, Text, TouchableOpacity, StyleSheet, StatusBar } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import PageHeader from './pageComponents/pageHeader';
+import NotificationManager from "../components/notificationComponents/notificationManager";
 
 const MainMenu = () => {
     const router = useRouter();
@@ -35,9 +36,7 @@ const MainMenu = () => {
                 <TouchableOpacity style={styles.iconButton} onPress={navProfile}>
                     <Ionicons name='person-circle' size={30} color="#555" />
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.iconButton}>
-                    <Ionicons name='notifications' size={30} color="#555" />
-                </TouchableOpacity>
+                <NotificationManager />
             </View>
 
             {/* Welcome Message Section */}
